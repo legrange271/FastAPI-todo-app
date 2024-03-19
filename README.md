@@ -2,6 +2,12 @@
 
 This is a small project to pracice building an application with FastAPI, dockerising it and then potentially providing code to deploy and use it on the cloud. 
 
+## Plan
+- Build basic ToDo app functionality
+- Dockerise it
+- Create configs for a k8s cluster
+- Create configs to deploy on Azure using terraform
+
 ## Usage
 
 #### Directly using python
