@@ -1,5 +1,7 @@
 # Project folder for building FastAPI TODO app
 
+This is a small project to pracice building an application with FastAPI, dockerising it and then potentially providing code to deploy and use it on the cloud. 
+
 ## Usage
 
 #### Directly using python
