@@ -1,3 +1,7 @@
 from unittest import TestCase
 
-# class TestCrudgues:
+from main import home
+
+class TestCRUD(TestCase):
+    def test_home(self):
+        self.assertEqual(home(), {"message":"Hello world!"})
