@@ -1,5 +1,4 @@
-from fastapi import FastAPI, Response, status
-from modules.models.models import Item, items
+from fastapi import FastAPI
 
 from modules.apis.items_crud_api import router as crud_router
 from modules.apis.frontend import router as frontend_router
