@@ -24,6 +24,14 @@ This is a small project to pracice building an application with FastAPI, dockeri
 - docker run  -p 8001:8001 <docker_image_name>
 
 
+#### Docker Compose
+- docker compose up -d --build
+    - include --build if you want to build docker containers as well 
+
+- docker compose down
+    - to stop the containers     
+
+
 #### Run unittests
 - python3 -m unittest discover
 

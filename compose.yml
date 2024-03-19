@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  fastapi_todo_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fastapi_todo_app:latest
+    container_name: "fastapi_todo_app"
+    expose:
+      - 8001
+    ports:
+      - 8001:8001
+    command: uvicorn main:app --port 8001 --host 0.0.0.0
