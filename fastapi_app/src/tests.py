@@ -1,4 +1,5 @@
 from unittest import TestCase
+from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
@@ -6,6 +7,8 @@ from main import app
 from modules.apis.frontend import home
 
 from modules.models.models import items, Item
+
+from modules.utils.id_gen  import gen_unique_id
 
 
 class TestFrontend(TestCase):
@@ -20,7 +23,7 @@ class TestCRUD(TestCase):
         """Method to set up code for testing"""
         self.client = TestClient(app)
         items.clear()
-        items[1] = Item(name="Test 1")
+        items["1"] = Item(name="Test 1")
 
 
     def tearDown(self):
@@ -33,18 +36,14 @@ class TestCRUD(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"Items": {"1":{"name": "Test 1", "checked":False}}})
 
-    def test_add_item_success(self):
+    @patch('modules.apis.items_crud_api.gen_unique_id')
+    def test_add_item_success(self, mock_uuid):
         """Method to test adding an item functionality"""
-        response = self.client.post("api/items/2", json={"name": "Test 2"})
+        mock_uuid.return_value = "2"
+        response = self.client.post("api/items", json={"name": "Test 2"})
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.json(), {"id": 2, "name":"Test 2", "checked":False})
-        self.assertEqual(items, {1:Item(name="Test 1"), 2:Item(name="Test 2")})
-    
-    def test_add_item_fails(self):
-        """Method to test adding an item functionality when item exists"""
-        response = self.client.post("api/items/1", json={"name": "Test 1"})
-        self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.json(), {"message": "Item already exists"})
+        self.assertEqual(response.json(), {"id": "2", "name":"Test 2", "checked":False})
+        self.assertEqual(items, {"1":Item(name="Test 1"), "2":Item(name="Test 2")})
 
     def test_get_item_exists(self):
         """test that the get item function works when item exists"""
@@ -75,7 +74,7 @@ class TestCRUD(TestCase):
         """test whether checking an item works"""
         response = self.client.put("api/items/1", json={"checked": True})
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.json(), {"id": 1, "name":"Test 1", "checked":True})
+        self.assertEqual(response.json(), {"id": "1", "name":"Test 1", "checked":True})
 
 
     def test_update_item_fail(self):
