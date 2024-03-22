@@ -67,3 +67,36 @@ This is a small project to pracice building an application with FastAPI, dockeri
 - Run tests using the following command
     - cd fastapi_app/src/ 
     - python3 -m unittest discover
+
+
+#### Running kubernetes cluster to host
+- N.B - you will need cluster provisioned
+    - For simplicity can use minikube
+
+##### RUn following commands
+- minikube start 
+    - Initialises the cluster
+    - For different providers you will need to configure access
+
+-  minikube image load fastapi_todo_app:1.0.0
+    - ensures image is loaded into minikube docker environmnet
+
+- kubectl apply -f todo-deployment.yaml
+    - applies the deployment
+    - can edit and reapply to rollout new changes 
+
+- kubectl apply -f load-balancer-service.yaml
+    - creates load balancer service 
+
+- kubectl get all 
+    - lists all created deployments and services 
+    - use to check all created properlys
+
+- minikube service fastapi-todo-api-loadbalancer --url
+    - return the url back for the load balancer which allows you to route traffic into the server
+    - you will need to use this to access the app
+
+- minikube delete 
+    - these will delete everything for you 
+
+
