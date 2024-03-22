@@ -3,6 +3,8 @@ from modules.models.models import Item, items
 
 router = APIRouter()
 
+### TODO: fix these up to have better functionality
+
 @router.get("/items", status_code=200)
 def get_items():
     """Endpoint for listing all items"""
@@ -27,3 +29,4 @@ def add_item(item_id:int, item: Item, response:Response):
         items[item_id] = item
         return {"Todo":item.name, "Id": item_id}
     
+### TODO: Add section for checking items to see if they are checked or not

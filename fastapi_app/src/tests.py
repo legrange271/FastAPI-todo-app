@@ -28,4 +28,5 @@ class TestCRUD(TestCase):
         response = self.client.get("api/items")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"Items": {"1":{"name": "Test 1", "checked":None}}})
-    
+
+### TODO: add more unit tests

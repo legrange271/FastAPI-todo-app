@@ -7,3 +7,6 @@ app = FastAPI()
 
 app.include_router(crud_router, prefix="/api", tags=["crud_router"])
 app.include_router(frontend_router, tags=["frontend_router"])
+
+
+## TODO: add start up and shutdown to persist the items 

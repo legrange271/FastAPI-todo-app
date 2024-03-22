@@ -2,11 +2,11 @@ FROM python:3.10-alpine
 
 WORKDIR /src/
 
-COPY ./fastapi_app/requirements.txt /src/requirements.txt
+COPY ./requirements.txt /src/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r  requirements.txt
 
-COPY ./fastapi_app /src/
+COPY ./src/ /src/
 
 EXPOSE 8001
 
