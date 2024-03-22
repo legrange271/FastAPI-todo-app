@@ -8,3 +8,9 @@ class Item(BaseModel):
 # Here we define a simple in memory non persistent file store 
 # TODO: add a start up and end command to save this and keep it secure
 items = {}
+
+
+class UpdateCheckedStatus(BaseModel):
+    checked: bool
+
+    

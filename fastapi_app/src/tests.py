@@ -70,4 +70,18 @@ class TestCRUD(TestCase):
         response = self.client.delete("api/items/2")
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json(), {"message": "ID not found"})
+
+    def test_update_item_success(self):
+        """test whether checking an item works"""
+        response = self.client.put("api/items/1", json={"checked": True})
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.json(), {"id": 1, "name":"Test 1", "checked":True})
+
+
+    def test_update_item_fail(self):
+        """test whether checking an item works"""
+        response = self.client.put("api/items/2", json={"checked": True})
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json(), {"message": "ID not found"})
+
 ### TODO: add more unit tests
