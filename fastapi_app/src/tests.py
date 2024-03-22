@@ -59,4 +59,15 @@ class TestCRUD(TestCase):
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json(), {"message": "ID not found"})
 
+    def test_delete_item_success(self):
+        """test deleting an item from the list"""
+        response = self.client.delete("api/items/1")
+        self.assertEqual(response.status_code, 204)
+        self.assertEqual(items, {})
+
+    def test_delete_item_fail(self):
+        """test deleting an item from the list fialing"""
+        response = self.client.delete("api/items/2")
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json(), {"message": "ID not found"})
 ### TODO: add more unit tests
