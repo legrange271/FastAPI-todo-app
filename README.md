@@ -11,7 +11,7 @@ This is a small project to pracice building an application with FastAPI, dockeri
 ## Usage
 
 #### Directly using python
-- Create a python env
+- Create a python env in fastapi_app
     - python3 -m venv <env_name>
 - open environment 
     - source <env_name>/bin/activate
@@ -20,6 +20,8 @@ This is a small project to pracice building an application with FastAPI, dockeri
 - uvicorn main:app --port=<PORT_NUMBER> 
 
 #### Docker
+- cd into fastapi_app
+
 - docker build -t <docker_image_name> .
 - docker run  -p 8001:8001 <docker_image_name>
 
@@ -63,4 +65,5 @@ This is a small project to pracice building an application with FastAPI, dockeri
 - Unit tests are run on this to ensure that everything is running correctly
 
 - Run tests using the following command
+    - cd fastapi_app/src/ 
     - python3 -m unittest discover
