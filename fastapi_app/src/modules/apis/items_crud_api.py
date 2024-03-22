@@ -44,6 +44,6 @@ def add_item(item_id:int, item: Item, response:Response):
         return {"message": "Item already exists"}
     else:
         items[item_id] = item
-        return {"Todo":item.name, "Id": item_id}
+        return {"id": item_id, "name":item.name, "checked":item.checked}
     
 ### TODO: Add section for checking items to see if they are checked or not
