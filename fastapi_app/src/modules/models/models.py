@@ -12,5 +12,3 @@ items = {}
 
 class UpdateCheckedStatus(BaseModel):
     checked: bool
-
-    
