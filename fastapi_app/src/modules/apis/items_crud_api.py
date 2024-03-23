@@ -4,8 +4,6 @@ from modules.utils.id_gen import gen_unique_id
 
 router = APIRouter()
 
-### TODO: fix these up to have better functionality
-
 @router.get("/items", status_code=200)
 def get_items():
     """Endpoint for listing all items"""
