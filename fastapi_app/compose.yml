@@ -11,4 +11,6 @@ services:
       - 8001
     ports:
       - 8001:8001
+    volumes:
+      - ./src/data/data.json:/src/data/data.json
     command: uvicorn main:app --port 8001 --host 0.0.0.0
