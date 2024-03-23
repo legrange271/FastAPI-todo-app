@@ -9,5 +9,5 @@ spec:
     - protocol: TCP 
       port: 80
       targetPort: 8001
-      nodePort: 30008
+      # nodePort: 30008 # Add in if you want specific port on cluster
   type: LoadBalancer
